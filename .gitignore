@@ -35,3 +35,6 @@ wheels/
 # Environments
 *.env.prod
 *.env.prod*
+
+# Logs
+*logs

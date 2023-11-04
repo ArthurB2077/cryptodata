@@ -17,7 +17,7 @@ x-airflow-common: &airflow-common
         AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
         AIRFLOW__CORE__FERNET_KEY: ""
         AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
-        AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+        AIRFLOW__CORE__LOAD_EXAMPLES: "true"
         AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session"
         AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: "true"
         # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
@@ -268,14 +268,6 @@ services:
             - kafka
         volumes:
             - ./consumers/example/main.py:/home/consumer/main.py
-
-    spark:
-        build:
-            context: ./spark
-            dockerfile: spark.Dockerfile
-        ports:
-            - "8880:8080"
-            - "7077:7077"
 volumes:
     postgres-db-volume:
     kafka_data:
